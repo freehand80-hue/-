@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">든든 주차비서</string>
+    <string name="header_subtitle">야외 고대비 GPS 주차 기억</string>
+    <string name="status_parked">주차 위치 기록됨</string>
+    <string name="status_empty">저장된 주차 위치 없음</string>
+
+    <!-- Primary Actions -->
+    <string name="action_save_parking">현재 주차 위치 저장</string>
+    <string name="action_save_new_parking">새 위치로 다시 저장</string>
+    <string name="action_navigate_to_car">내 차 위치 길찾기</string>
+    <string name="action_take_pillar_photo">기둥 사진 찍기</string>
+    <string name="action_retake_pillar_photo">기둥 사진 다시 찍기</string>
+    <string name="action_pick_from_gallery">앨범에서 선택</string>
+    <string name="action_edit_memo">메모 수정</string>
+    <string name="action_clear_parking">출차 완료 (기록 비우기)</string>
+    <string name="action_history">최근 기록</string>
+
+    <!-- Save Sheet -->
+    <string name="save_sheet_title">현재 주차 위치 저장</string>
+    <string name="save_sheet_gps_loading">GPS 좌표 수신 중…</string>
+    <string name="save_sheet_gps_ready">GPS 좌표 확보 완료</string>
+    <string name="save_sheet_gps_retry">GPS 다시 잡기</string>
+    <string name="save_sheet_memo_label">층수 / 구역 메모</string>
+    <string name="save_sheet_memo_placeholder">예: 지하 2층 B구역 14번 기둥</string>
+    <string name="save_sheet_quick_floor">빠른 층수 선택</string>
+    <string name="save_sheet_quick_zone">빠른 구역 선택</string>
+    <string name="save_sheet_confirm">이 위치로 저장 완료</string>
+    <string name="save_sheet_cancel">취소</string>
+
+    <!-- Labels & Info -->
+    <string name="label_saved_time">저장 시각</string>
+    <string name="label_elapsed_time">경과 시간</string>
+    <string name="label_gps_coords">GPS 좌표</string>
+    <string name="label_floor_zone">층수 · 구역 메모</string>
+    <string name="label_no_memo">메모 없음 (탭하여 입력)</string>
+    <string name="label_pillar_photo">주차 기둥 사진 메모</string>
+    <string name="label_no_photo_hint">기둥 번호나 주변 표지판을 찍어두면 지하 주차장에서도 쉽게 찾을 수 있습니다.</string>
+    <string name="label_map_app_selector">도보 길찾기 지도 앱</string>
+    <string name="label_copy_coords">좌표 복사</string>
+    <string name="label_share_location">위치 공유</string>
+    <string name="label_tap_to_zoom">사진을 탭하여 크게 보기</string>
+    <string name="label_delete_photo">사진 삭제</string>
+
+    <!-- Map Apps -->
+    <string name="map_app_auto">자동 선택</string>
+    <string name="map_app_kakao">카카오맵</string>
+    <string name="map_app_naver">네이버 지도</string>
+    <string name="map_app_google">구글 지도</string>
+
+    <!-- Empty State -->
+    <string name="empty_title">주차를 마치셨나요?</string>
+    <string name="empty_description">아래 노란색 버튼을 눌러 현재 GPS 위치와 층수/구역 메모, 기둥 사진을 한 번에 저장해 두세요.</string>
+
+    <!-- History Sheet -->
+    <string name="history_title">최근 주차 기록</string>
+    <string name="history_empty">이전 주차 기록이 아직 없습니다.</string>
+    <string name="history_restore">이 위치로 길찾기</string>
+    <string name="history_delete">삭제</string>
+
+    <!-- Confirmations & Permissions -->
+    <string name="confirm_clear_title">출차 완료 처리할까요?</string>
+    <string name="confirm_clear_message">현재 주차 위치를 출차 완료하고 최근 기록으로 옮깁니다.</string>
+    <string name="confirm_clear_positive">출차 완료</string>
+    <string name="permission_location_required">현재 GPS 좌표를 저장하려면 위치 권한이 필요합니다.</string>
+    <string name="permission_camera_required">주차 기둥 사진을 촬영하려면 카메라 권한이 필요합니다.</string>
+    <string name="action_open_settings">설정 열기</string>
+
+    <!-- Messages -->
+    <string name="msg_saved_success">주차 위치가 저장되었습니다.</string>
+    <string name="msg_memo_updated">층수/구역 메모가 수정되었습니다.</string>
+    <string name="msg_photo_saved">기둥 사진이 저장되었습니다.</string>
+    <string name="msg_photo_deleted">기둥 사진이 삭제되었습니다.</string>
+    <string name="msg_cleared_success">출차 완료 처리되었습니다.</string>
+    <string name="msg_coords_copied">GPS 좌표가 클립보드에 복사되었습니다.</string>
+    <string name="msg_gps_error">현재 GPS 위치를 가져오지 못했습니다. 위치 서비스가 켜져 있는지 확인해 주세요.</string>
+    <string name="msg_map_not_found">실행할 수 있는 지도 앱을 찾지 못했습니다.</string>
+    <string name="msg_camera_launch_error">카메라를 실행할 수 없습니다. 앨범에서 선택을 이용해 주세요.</string>
+
+    <!-- Content Descriptions -->
+    <string name="cd_empty_parking_banner">주차 구역과 GPS 위치 표적 일러스트</string>
+    <string name="cd_pillar_photo">저장된 주차 기둥 사진</string>
+    <string name="cd_close">닫기</string>
+    <string name="cd_history">최근 주차 기록 보기</string>
+
+    <!-- 2-Hour Parking Fee Reminder -->
+    <string name="notification_fee_title">주차 2시간 경과 — 요금 정산 알림</string>
+    <string name="reminder_card_title">2시간 주차 요금 정산 알림</string>
+    <string name="reminder_sheet_subtitle">저장 후 2시간이 지나면 요금 정산 알림이 울립니다.</string>
+    <string name="reminder_status_off">정산 알림 꺼짐</string>
+    <string name="reminder_status_passed">주차 2시간 경과 · 요금 정산을 확인하세요</string>
+    <string name="permission_notification_required">2시간 뒤 주차 요금 정산 알림을 받으려면 알림 권한이 필요합니다.</string>
+</resources>

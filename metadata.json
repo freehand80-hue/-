@@ -1,0 +1,6 @@
+{
+  "name": "든든 주차비서",
+  "description": "GPS 좌표, 층수/구역 메모, 기둥 사진으로 내 차 주차 위치를 저장하고 카카오맵·네이버 지도·구글 지도 도보 길찾기로 바로 안내하는 고대비 주차 위치 기억 앱",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
