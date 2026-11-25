@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       build_type:
-        description: '빌드할 APK 종류 선택 (debug: 테스트용 즉시 설치 / release: 서명된 배포용)'
+        description: '빌드할 APK 종류 선택 (debug: 테스트용 / release: 서명된 배포용)'
         required: true
         default: 'debug'
         type: choice
@@ -17,8 +17,8 @@ on:
           - release
 
 jobs:
-  build:
-    name: Build ${{ inputs.build_type || 'debug' }} APK
+  build-apk:
+    name: Build Android APK (${{ inputs.build_type || 'debug' }})
     runs-on: ubuntu-latest
 
     steps:
@@ -35,7 +35,7 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Accept Android SDK licenses
-        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null 2>&1 || true
+        run: yes | sdkmanager --licenses > /dev/null 2>&1 || true
 
       - name: Set up Gradle 9.3.1
         uses: gradle/actions/setup-gradle@v4
@@ -43,7 +43,7 @@ jobs:
           gradle-version: 9.3.1
 
       - name: Prepare debug keystore
-        if: ${{ (inputs.build_type || 'debug') == 'debug' }}
+        if: ${{ inputs.build_type != 'release' }}
         run: |
           if [ -f debug.keystore.base64 ]; then
             base64 --decode debug.keystore.base64 > debug.keystore
@@ -60,11 +60,11 @@ jobs:
           fi
 
       - name: Build Debug APK
-        if: ${{ (inputs.build_type || 'debug') == 'debug' }}
+        if: ${{ inputs.build_type != 'release' }}
         run: gradle :app:assembleDebug --stacktrace
 
-      - name: Upload Debug APK
-        if: ${{ (inputs.build_type || 'debug') == 'debug' }}
+      - name: Upload Debug APK Artifact
+        if: ${{ inputs.build_type != 'release' }}
         uses: actions/upload-artifact@v4
         with:
           name: deundeun-parking-debug-apk
@@ -76,9 +76,11 @@ jobs:
         if: ${{ inputs.build_type == 'release' }}
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
-          if [ -z "$KEYSTORE_BASE64" ]; then
-            echo "ERROR: GitHub Secrets에 KEYSTORE_BASE64가 설정되어 있지 않습니다."
+          if [ -z "$KEYSTORE_BASE64" ] || [ -z "$STORE_PASSWORD" ] || [ -z "$KEY_PASSWORD" ]; then
+            echo "ERROR: GitHub Secrets(KEYSTORE_BASE64, STORE_PASSWORD, KEY_PASSWORD)를 모두 등록해 주세요."
             exit 1
           fi
           echo "$KEYSTORE_BASE64" | base64 --decode > "${{ github.workspace }}/my-upload-key.jks"
@@ -91,7 +93,7 @@ jobs:
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: gradle :app:assembleRelease --stacktrace
 
-      - name: Upload Release APK
+      - name: Upload Release APK Artifact
         if: ${{ inputs.build_type == 'release' }}
         uses: actions/upload-artifact@v4
         with:
@@ -100,6 +102,6 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Clean up keystores
+      - name: Clean up temporary keystores
         if: always()
         run: rm -f debug.keystore "${{ github.workspace }}/my-upload-key.jks"
